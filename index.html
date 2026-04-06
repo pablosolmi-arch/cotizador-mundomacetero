@@ -700,13 +700,18 @@ function saveQuoteToSheet() {
   }
   var url = WEBHOOK_URL + "?" + params.join("&");
 
-  // Use image trick to bypass CORS (works with doGet in Apps Script)
-  var img = new Image();
-  img.onload = img.onerror = function() {
+  // Fetch with redirect follow + no-cors fallback
+  fetch(url, {mode:"no-cors",redirect:"follow"}).then(function() {
     quoteSaved = true;
     console.log("Cotizaci\u00f3n guardada en registro");
-  };
-  img.src = url;
+  }).catch(function() {
+    // Fallback: iframe
+    var f = document.createElement("iframe");
+    f.style.display = "none";
+    f.src = url;
+    document.body.appendChild(f);
+    setTimeout(function() { document.body.removeChild(f); quoteSaved = true; }, 5000);
+  });
 }
 
 function getDiasEntrega() {
