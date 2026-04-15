@@ -236,9 +236,16 @@ td{padding:8px 11px;vertical-align:middle;font-size:12px}
       <div class="hdr-sub">Agente Administrativo</div>
     </div>
   </div>
-  <div class="sync-wrap" onclick="tryLiveUpdate()" title="Clic para actualizar precios">
-    <div class="sync-dot cached" id="syncDot"></div>
-    <span id="syncStatus">Cargando...</span>
+  <div style="display:flex;align-items:center;gap:16px">
+    <a href="https://marketing-mm-sepia.vercel.app/dashboard" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:6px;font-size:11px;color:rgba(245,240,230,.65);text-decoration:none;padding:6px 12px;border:1px solid rgba(245,240,230,.15);border-radius:6px;transition:all .15s" onmouseover="this.style.color='var(--cream)';this.style.borderColor='var(--terra)'" onmouseout="this.style.color='rgba(245,240,230,.65)';this.style.borderColor='rgba(245,240,230,.15)'">
+      <span>📱</span>
+      <span>Agente Marketing</span>
+      <span style="font-size:9px;opacity:.6">↗</span>
+    </a>
+    <div class="sync-wrap" onclick="tryLiveUpdate()" title="Clic para actualizar precios">
+      <div class="sync-dot cached" id="syncDot"></div>
+      <span id="syncStatus">Cargando...</span>
+    </div>
   </div>
 </div>
 <div class="tabs">
